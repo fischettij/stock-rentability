@@ -4,6 +4,9 @@ const app = express();
 const morgan = require('morgan'); // Morgan is loggin framework
 const bodyParser = require('body-parser');
 
+// Import routes
+const dealsRoutes = require('./routes/deal.js')
+
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -23,7 +26,7 @@ app.use((req, res, next) => {
 });
 
 // Routes which handle requests
-// Example: app.use('/lodgings', lodgingRoutes);
+app.use('/deals', dealsRoutes);
 
 // Error Handling
 app.use((req, res, next) => {

@@ -1,11 +1,11 @@
 {
-  "name": "Stock rentability",
+  "name": "stock-rentability",
   "version": "1.0.0",
   "description": "Stack rentability backend",
   "main": "server.js",
   "author": "Fische",
   "license": "MIT",
-  "scripts": {
+    "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "debug": "nodemon server.js"
