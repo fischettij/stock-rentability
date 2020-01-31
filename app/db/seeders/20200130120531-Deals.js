@@ -9,6 +9,8 @@ module.exports = {
         amount: 15,
         price: 608,
         payment: 9120,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
       },
       {
         date: Date.now(),
@@ -17,6 +19,8 @@ module.exports = {
         amount: 15,
         price: 700,
         payment: 1050,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
       },
       {
         date: Date.now(),
@@ -25,6 +29,8 @@ module.exports = {
         amount: 100,
         price: 15,
         payment: 150,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
       },{
         date: Date.now(),
         simbol: 'BBAR',
@@ -32,6 +38,8 @@ module.exports = {
         amount: 100,
         price: 16,
         payment: 160,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
       }], {});
   },
 
