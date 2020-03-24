@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   const Deal = sequelize.define('Deal', {
     date: {
       type: DataTypes.DATE,
-      get() { return moment.utc(this.getDataValue('regDate')).format('YYYY-MM-DD')},
+      get() { return moment.utc(this.getDataValue('date')).format('YYYY-MM-DD')},
     },
     symbol: DataTypes.STRING,
     type: DataTypes.STRING,

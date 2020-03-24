@@ -22,7 +22,7 @@ exports.post = async (req, res, next) => {
     }, { transaction: t }).then(deal => { return deal })
   }).then((result) => { res.status(201).json({ id: result.id }) })
     .catch((err) => { console.log(err); res.status(500).send(err) })
-};
+  };
 
 exports.getById = (req, res, next) => { res.status(200) };
 
