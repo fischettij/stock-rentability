@@ -14,13 +14,13 @@ exports.post = async (req, res, next) => {
   sequelize.transaction(t => {
     return DealDB.create({
       date: req.body.date,
-      symbol: req.body.subTitle,
-      type: req.body.publisher,
-      amount: req.body.description,
-      price: req.body.datePublished,
-      payment: req.body.authors
+      symbol: req.body.symbol,
+      type: req.body.type,
+      amount: req.body.amount,
+      price: req.body.price,
+      payment: req.body.payment,
     }, { transaction: t }).then(deal => { return deal })
-  }).then((result) => { res.status(201).json({ dealId: result[0].dealId }) })
+  }).then((result) => { res.status(201).json({ id: result.id }) })
     .catch((err) => { console.log(err); res.status(500).send(err) })
 };
 

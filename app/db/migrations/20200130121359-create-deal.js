@@ -10,21 +10,27 @@ module.exports = {
       },
       date: {
         type: Sequelize.DATEONLY,
+        allowNull : false,
       },
       symbol: {
         type: Sequelize.STRING,
+        allowNull : false,
       },
       type: {
         type: Sequelize.STRING,
+        allowNull : false,
       },
       amount: {
         type: Sequelize.INTEGER,
+        allowNull : false,
       },
       price: {
         type: Sequelize.DECIMAL,
+        allowNull : false,
       },
       payment: {
         type: Sequelize.DECIMAL,
+        allowNull : false,
       },
     });
   },
