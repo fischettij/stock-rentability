@@ -27,19 +27,32 @@ exports.post = async (req, res, next) => {
 exports.getById = (req, res, next) => { res.status(200) };
 
 exports.put = (req, res, next) => {
+  updatedDeal = {
+    symbol: req.body.symbol,
+    type: req.body.type,
+    amount: req.body.amount,
+    price: req.body.price,
+    payment: req.body.payment,
+  };
   sequelize.transaction(t => {
-    DealDB.update(
-      {
-        symbol: req.body.symbol,
-        type: req.body.type,
-        amount: req.body.amount,
-        price: req.body.price,
-        payment: req.body.payment,
-      },
+    DealDB.update(updatedDeal,
       { where: { id: req.params.id } }
     )
-      .then(rowsUpdated => {
-        res.status(200).json(rowsUpdated)
+      .then(resultArray => {
+        if (resultArray[0] === 1) {
+          res.status(204).json(
+            {
+              status: "success",
+              deal: updatedDeal
+            }
+          )
+        } else {
+          res.status(400).json({
+            status: 400,
+            error: "Can't update Deal",
+            objectThatFailed: updatedDeal
+          })
+        }
       })
       .catch(next)
   })
