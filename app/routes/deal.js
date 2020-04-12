@@ -10,5 +10,7 @@ router.post('/', Controller.post);
 router.get('/:id', Controller.getById);
 // Handling PUT
 router.put('/:id', Controller.put);
+// Handling DELETE
+router.delete('/:id', Controller.asyncDelete);
 
 module.exports = router;

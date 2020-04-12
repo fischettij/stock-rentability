@@ -56,3 +56,31 @@ exports.put = (req, res, next) => {
       .catch(next)
   })
 };
+
+async function asyncDelete(req, res, next) {
+  var deal = await DealDB.findOne({ where: { id: req.params.id } })
+  if (deal === null) {
+    res.status(404).json({
+      status: 404,
+      error: "Deal not found",
+      objectThatFailed: { id: req.params.id }
+    })
+  } else {
+    var deleteResult = await deal.destroy();
+    if (deleteResult) {
+      res.status(200).json({
+        status: 200,
+        error: "Deal deleted successfully"
+      })
+    }
+    else {
+      res.status(500).json({
+        status: 500,
+        error: "Cannot delete deal",
+        objectThatFailed: { id: req.params.id }
+      })
+    }
+  }
+}
+
+module.exports.asyncDelete = asyncDelete
