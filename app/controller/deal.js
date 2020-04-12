@@ -5,7 +5,6 @@ exports.getAll = (req, res, next) => {
   DealDB.findAll()
     .then(deals => res.status(200).json(deals))
     .catch(err => {
-      console.log(err);
       res.status(500).json(err)
     })
 };
