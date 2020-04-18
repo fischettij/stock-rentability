@@ -23,6 +23,30 @@ exports.getById = (req, res, next) => { res.status(500).json({ error: "Not imple
 
 exports.put = (req, res, next) => { res.status(500).json({ error: "Not implemented" }) };
 
-async function asyncDelete(req, res, next) { res.status(500).json({ error: "Not implemented" }) }
+async function asyncDelete(req, res, next) { 
+  let card = await CreditCardDB.findOne({ where: { id: req.params.id } })
+  if (card === null) {
+    res.status(404).json({
+      status: 404,
+      error: "Credit Card not found",
+      objectThatFailed: { id: req.params.id }
+    })
+  } else {
+    let deleteResult = await card.destroy();
+    if (deleteResult) {
+      res.status(200).json({
+        status: 200,
+        error: "Credit Card deleted successfully"
+      })
+    }
+    else {
+      res.status(500).json({
+        status: 500,
+        error: "Cannot delete credit card",
+        objectThatFailed: { id: req.params.id }
+      })
+    }
+  }
+}
 
 module.exports.asyncDelete = asyncDelete
