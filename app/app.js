@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 // Import routes
 const dealsRoutes = require('./routes/deal.js')
+const creditCards = require('./routes/creditCard.js')
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
 
 // Routes which handle requests
 app.use('/deals', dealsRoutes);
+app.use('/creditCards', creditCards);
 
 // Error Handling
 app.use((req, res, next) => {
