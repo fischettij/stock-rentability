@@ -6,13 +6,12 @@ async function getAll(req, res, next) {
     let deals = await DealDB.findAll()
     let dealsBySymbol = await groupBy(deals, 'symbol')
     let accountBalance = {}
-    // Dictionary symbol => [deals]
     for (let symbol in dealsBySymbol) {
       accountBalance[symbol] = balanceFrom(dealsBySymbol[symbol])
     }
     return res.status(200).json(accountBalance)
   } catch {
-    e => { res.status(500).json(3) }
+    e => { res.status(500).json(e) }
   }
 };
 module.exports.getAll = getAll
