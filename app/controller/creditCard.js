@@ -23,7 +23,7 @@ exports.getById = (req, res, next) => { res.status(500).json({ error: "Not imple
 
 exports.put = (req, res, next) => { res.status(500).json({ error: "Not implemented" }) };
 
-async function asyncDelete(req, res, next) { 
+const asyncDelete = async (req, res, next) => {
   let card = await CreditCardDB.findOne({ where: { id: req.params.id } })
   if (card === null) {
     res.status(404).json({
