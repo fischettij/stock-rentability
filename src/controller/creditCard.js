@@ -1,5 +1,5 @@
-const sequelize = require('../db/models').sequelize;
-const CreditCardDB = require('../db/models').CreditCard;
+const sequelize = require('./../../db/models').sequelize;
+const CreditCardDB = require('./../../db/models').CreditCard;
 
 exports.getAll = (req, res, next) => {
   CreditCardDB.findAll()

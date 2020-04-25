@@ -1,8 +1,7 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const Controller = require('../controller/accountBalance.js');
 
-// Handling GET all
+// Methods
 router.get('/', Controller.getAll);
 
 module.exports = router;
