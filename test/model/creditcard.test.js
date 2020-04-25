@@ -1,4 +1,4 @@
-const { CreditCard } = require('../src/model/creditCard');
+const { CreditCard } = require('../../src/model/creditCard');
 
 describe('creditCard', () => {
   it('accessors', () => {
