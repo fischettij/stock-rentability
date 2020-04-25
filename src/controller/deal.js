@@ -1,5 +1,5 @@
-const sequelize = require('../db/models').sequelize;
-const DealDB = require('../db/models').Deal
+const sequelize = require('./../../db/models').sequelize;
+const DealDB = require('./../../db/models').Deal
 
 exports.getAll = (req, res, next) => {
   DealDB.findAll()

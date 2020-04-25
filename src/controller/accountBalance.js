@@ -1,5 +1,5 @@
-const sequelize = require('../db/models').sequelize;
-const DealDB = require('../db/models').Deal
+const sequelize = require('./../../db/models').sequelize;
+const DealDB = require('./../../db/models').Deal
 
 async function getAll(req, res, next) {
   try {

@@ -1,4 +1,8 @@
-node_modules
-database.sqlite3
+.vs/
+.vscode/
 *.log
-.vscode
+.env
+.env.test
+*tests*.xml
+coverage/
+node_modules/
