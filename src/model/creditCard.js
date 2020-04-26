@@ -19,7 +19,6 @@ class CreditCard {
       this.paymentsByMonth.get(keyDate).push(payment)
     } else {
       this.paymentsByMonth.set(keyDate, [payment])
-      console.log(this.paymentsByMonth)
     }
   }
 

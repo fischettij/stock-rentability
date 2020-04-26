@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const morgan = require('morgan');
 const logger = require('winston-ready');
 const app    = require('./src/server');
