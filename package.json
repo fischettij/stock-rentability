@@ -8,15 +8,20 @@
   "scripts": {
     "dev": "nodemon --ignore node_modules ./index.js",
     "start": "node ./index.js",
-    "test": "NODE_ENV=test jest --verbose",
-    "test:ci": "NODE_ENV=test jest --coverage"
+    "lint": "eslint --ext .js ./ src/ test/",
+    "test": "jest --verbose",
+    "test:ci": "jest --verbose --coverage",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-routes-catalogue": "^1.1.0",
+    "express-validator": "^6.5.0",
     "http-status-codes": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "sequelize": "^5.21.3",
     "sqlite3": "^4.1.1",
