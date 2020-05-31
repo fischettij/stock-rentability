@@ -1,6 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
+const logger     = require('winston-ready');
 const { NOT_FOUND, OK, INTERNAL_SERVER_ERROR } = require('http-status-codes');
 
 const app = express();
