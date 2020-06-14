@@ -9,7 +9,7 @@ const app = express();
 function jsonOK(data) { this.type('application/json').status(OK).json(data); }
 
 // Middleware
-app.use(cors())
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ type: 'application/json' }));
 app.use((req, res, next) => {

@@ -1,36 +1,37 @@
-const sequelize = require('./../../db/models').sequelize;
-const DealDB = require('./../../db/models').Deal
+/* eslint-disable guard-for-in */
+const DealDB = require('../../db/models').Deal;
 
-async function getAll(req, res, next) {
-  try {
-    let deals = await DealDB.findAll()
-    let dealsBySymbol = await groupBy(deals, 'symbol')
-    let accountBalance = {}
-    for (let symbol in dealsBySymbol) {
-      accountBalance[symbol] = balanceFrom(dealsBySymbol[symbol])
-    }
-    return res.status(200).json(accountBalance)
-  } catch {
-    e => { res.status(500).json(e) }
-  }
-};
-module.exports.getAll = getAll
-
-var groupBy = (xs, key) => {
-  return xs.reduce(function (rv, x) {
-    (rv[x[key]] = rv[x[key]] || []).push(x);
-    return rv;
-  }, {});
-};
-
-var balanceFrom = (dealsArray) => {
-  let balance = 0
-  dealsArray.forEach(element => {
+const balanceFrom = (dealsArray) => {
+  let balance = 0;
+  dealsArray.forEach((element) => {
     if (element.type === 'C') {
-      balance = (balance + element.payment)
+      balance += element.payment;
     } else {
-      balance = (balance - element.payment)
+      balance -= element.payment;
     }
-  })
-  return balance
+  });
+  return balance;
+};
+
+const groupBy = (xs, key) => xs.reduce((rv, x) => {
+  // eslint-disable-next-line no-param-reassign
+  (rv[x[key]] = rv[x[key]] || []).push(x);
+  return rv;
+}, {});
+
+async function getAll(req, res) {
+  try {
+    const deals = await DealDB.findAll();
+    const dealsBySymbol = await groupBy(deals, 'symbol');
+    const accountBalance = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const symbol in dealsBySymbol) {
+      accountBalance[symbol] = balanceFrom(dealsBySymbol[symbol]);
+    }
+    return res.status(200).json(accountBalance);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+  return res;
 }
+module.exports.getAll = getAll;
