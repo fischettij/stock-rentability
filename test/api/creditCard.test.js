@@ -5,15 +5,11 @@ const app = require('../../src/server')
 const { OK, CREATED } = require('http-status-codes');
 const { sequelize, CreditCard } = require('../../db/models');
 
-describe('Post Endpoints', () => {
+describe('creditCard', () => {
 
-  beforeEach(() => {
-    sequelize.sync()
-  }); 
-
-  afterEach(() => {
-    sequelize.truncate()
-  }); 
+  beforeEach(async () => {
+    await sequelize.sync({ force: true });
+  });
 
   const creditCardSchema = {
     properties: {
