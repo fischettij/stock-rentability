@@ -12,7 +12,6 @@ services:
 before_script: yarn run lint
 script: yarn test:ci
 after_success: 
-- yarn coveralls
 - bash .travis/docker_and_deploy.sh
 
 email:
