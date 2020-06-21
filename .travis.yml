@@ -6,7 +6,14 @@ node_js:
 cache:
   directories:
     - "node_modules"
-before_script:
-  - yarn install
-script:
-  - yarn test:ci
+services:
+  - docker
+
+before_script: yarn run lint
+script: yarn test:ci
+after_success: 
+- bash .travis/docker_and_deploy.sh
+
+email:
+  on_failure: change
+  on_success: never

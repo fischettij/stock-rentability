@@ -1,22 +1,22 @@
-'use strict';
 
-const moment = require('moment')
+const moment = require('moment');
 
 module.exports = (sequelize, DataTypes) => {
   const Deal = sequelize.define('Deal', {
     date: {
       type: DataTypes.DATE,
-      get() { return moment(new Date(this.getDataValue('date'))).format('YYYY-MM-DD') },
+      get() { return moment(new Date(this.getDataValue('date'))).format('YYYY-MM-DD'); },
     },
     symbol: DataTypes.STRING,
     type: DataTypes.STRING,
     amount: DataTypes.INTEGER,
     price: DataTypes.DECIMAL,
-    payment: DataTypes.DECIMAL
+    payment: DataTypes.DECIMAL,
   }, {
-    timestamps: false
+    timestamps: false,
   });
-  Deal.associate = function (models) {
+  // eslint-disable-next-line no-unused-vars
+  Deal.associate = (models) => {
   };
   return Deal;
 };

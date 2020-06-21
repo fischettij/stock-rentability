@@ -1,31 +1,33 @@
+
 class CreditCard {
   constructor(bank, company) {
     this.bank = bank;
     this.company = company;
-    this.paymentsByMonth = new Map()
+    this.paymentsByMonth = new Map();
   }
+
   paymentsOn(date) {
-    var keyDate = this._dateToStringKey(date)
+    const keyDate = this.dateToStringKey(date);
     if (this.paymentsByMonth.has(keyDate)) {
-      return this.paymentsByMonth.get(keyDate)
-    } else {
-      return []
+      return this.paymentsByMonth.get(keyDate);
     }
+    return [];
   }
 
   addPayment(payment) {
-    var keyDate = this._dateToStringKey(payment.date)
+    const keyDate = this.dateToStringKey(payment.date);
     if (this.paymentsByMonth.has(keyDate)) {
-      this.paymentsByMonth.get(keyDate).push(payment)
+      this.paymentsByMonth.get(keyDate).push(payment);
     } else {
-      this.paymentsByMonth.set(keyDate, [payment])
+      this.paymentsByMonth.set(keyDate, [payment]);
     }
   }
 
   // Private methods
-  _dateToStringKey(date) {
-    return `${date.getFullYear()}-${date.getMonth() + 1}-1)`
+  // eslint-disable-next-line class-methods-use-this
+  dateToStringKey(date) {
+    return `${date.getFullYear()}-${date.getMonth() + 1}-1)`;
   }
 }
 
-module.exports.CreditCard = CreditCard
+module.exports.CreditCard = CreditCard;

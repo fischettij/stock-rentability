@@ -1,14 +1,18 @@
 const cors = require('cors');
+const morgan = require('morgan');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { NOT_FOUND, OK, INTERNAL_SERVER_ERROR } = require('http-status-codes');
+const logger     = require('./lib/logger');
+const morganLog  = require('./lib/morgan');
 
 const app = express();
 
 function jsonOK(data) { this.type('application/json').status(OK).json(data); }
 
 // Middleware
-app.use(cors())
+app.use(cors());
+app.use(morgan('combined', { stream: { write: message => morganLog.info(message) } }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ type: 'application/json' }));
 app.use((req, res, next) => {
