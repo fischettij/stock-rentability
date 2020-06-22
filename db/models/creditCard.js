@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
   const CreditCard = sequelize.define('CreditCard', {
     bank: DataTypes.STRING,

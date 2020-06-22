@@ -28,7 +28,6 @@ app.use('/accountBalance', require('./api/accountBalance'));
 app.use('/users', require('./api/users'));
 app.use('/login', require('./api/login'));
 
-
 // Not Found Handling
 app.use((req, res, next) => {
   next({

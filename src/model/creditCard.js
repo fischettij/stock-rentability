@@ -1,4 +1,3 @@
-
 class CreditCard {
   constructor(bank, company) {
     this.bank = bank;
